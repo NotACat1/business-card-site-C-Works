@@ -35,6 +35,13 @@ module.exports = {
     filename: '[name].min.js',
     path: path.resolve(__dirname, 'dist'),
   },
+  resolve: {
+    alias: {
+      '@scss': path.resolve(__dirname + '/src/scss'),
+      '@varibles': path.resolve(__dirname + '/src/scss/varibles'),
+      '@mixins': path.resolve(__dirname + '/src/scss/mixins'),
+    },
+  },
   devServer: {
     static: path.resolve(__dirname, 'dist'),
     compress: true,

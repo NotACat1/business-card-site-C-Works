@@ -7,8 +7,8 @@
     "build": "webpack --mode development",
     "production": "webpack --mode production",
     "serve": "webpack serve",
-    "msg-commit": "commitlint -E HUSKY_GIT_PARAMS",
-    "pre-commit": "lint-staged",
+    "msg-commit": "npx commitlint -E HUSKY_GIT_PARAMS",
+    "pre-commit": "npx lint-staged",
     "husky-inst": "npx husky install && chmod +x .husky/pre-commit .husky/commit-msg",
     "deploy": "gh-pages -d dist"
   },
