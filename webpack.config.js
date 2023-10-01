@@ -37,6 +37,7 @@ module.exports = {
   },
   resolve: {
     alias: {
+      '@fonts': path.resolve(__dirname + '/src/fonts'),
       '@scss': path.resolve(__dirname + '/src/scss'),
       '@varibles': path.resolve(__dirname + '/src/scss/varibles'),
       '@mixins': path.resolve(__dirname + '/src/scss/mixins'),
