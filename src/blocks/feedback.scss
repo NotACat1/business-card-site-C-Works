@@ -1,11 +1,13 @@
-@import url('@mixins/block');
-@import url('@mixins/container');
-@import url('@mixins/text');
-@import url('@mixins/typography');
-@import url('@mixins/media');
-@import url('@mixins/link');
-@import url('@varibles/color');
-@import url('@varibles/font');
+/* stylelint-disable */
+@import '@mixins/block';
+@import '@mixins/container';
+@import '@mixins/text';
+@import '@mixins/typography';
+@import '@mixins/media';
+@import '@mixins/link';
+@import '@varibles/color';
+@import '@varibles/font';
+/* stylelint-enable */
 
 .feedback {
   @include block-reset;

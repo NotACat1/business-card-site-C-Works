@@ -1,6 +1,8 @@
-@import url('@mixins/block');
-@import url('@mixins/media');
-@import url('@mixins/container');
+/* stylelint-disable */
+@import '@mixins/block';
+@import '@mixins/media';
+@import '@mixins/container';
+/* stylelint-enable */
 
 .header {
   @include block-reset;

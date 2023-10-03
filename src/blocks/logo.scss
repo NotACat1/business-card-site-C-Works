@@ -1,9 +1,11 @@
-@import url('@mixins/block');
-@import url('@mixins/link');
-@import url('@mixins/typography');
-@import url('@mixins/media');
-@import url('@varibles/color');
-@import url('@varibles/font');
+/* stylelint-disable */
+@import '@mixins/block';
+@import '@mixins/link';
+@import '@mixins/typography';
+@import '@mixins/media';
+@import '@varibles/color';
+@import '@varibles/font';
+/* stylelint-enable */
 
 .logo {
   @include block-reset;

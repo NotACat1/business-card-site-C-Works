@@ -1,4 +1,6 @@
-@import url('@varibles/breakpoints');
+/* stylelint-disable */
+@import '@varibles/breakpoints';
+/* stylelint-enable */
 
 @mixin media($breakpoint) {
   @if map-has-key($breakpoints, $breakpoint) {

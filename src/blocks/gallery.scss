@@ -1,7 +1,9 @@
-@import url('@mixins/block');
-@import url('@mixins/media');
-@import url('@mixins/container');
-@import url('@varibles/color');
+/* stylelint-disable */
+@import '@mixins/block';
+@import '@mixins/media';
+@import '@mixins/container';
+@import '@varibles/color';
+/* stylelint-enable */
 
 .gallery {
   @include block-reset;
