@@ -1,10 +1,12 @@
-@import url('@mixins/block');
-@import url('@mixins/media');
-@import url('@mixins/text');
-@import url('@mixins/typography');
-@import url('@mixins/container');
-@import url('@varibles/color');
-@import url('@varibles/font');
+/* stylelint-disable */
+@import '@mixins/block';
+@import '@mixins/media';
+@import '@mixins/text';
+@import '@mixins/typography';
+@import '@mixins/container';
+@import '@varibles/color';
+@import '@varibles/font';
+/* stylelint-enable */
 
 .footer {
   @include block-reset;

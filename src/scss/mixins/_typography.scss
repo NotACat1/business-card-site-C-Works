@@ -1,4 +1,6 @@
-@import url('@mixins/media');
+/* stylelint-disable */
+@import '@mixins/media';
+/* stylelint-enable */
 
 @mixin typography-custom($font-size, $font-style, $font-weight, $line-height) {
   font-size: $font-size;

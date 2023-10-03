@@ -1,6 +1,8 @@
-@import url('@varibles/breakpoints');
-@import url('@varibles/container');
-@import url('@mixins/media');
+/* stylelint-disable */
+@import '@varibles/breakpoints';
+@import '@varibles/container';
+@import '@mixins/media';
+/* stylelint-enable */
 
 @mixin container-max-widths {
   @each $breakpoint, $size in $container-max-widths {

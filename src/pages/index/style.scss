@@ -1,13 +1,15 @@
-@import url('@scss/style');
-@import url('@blocks/gallery');
-@import url('@blocks/footer');
-@import url('@blocks/logo');
-@import url('@blocks/info');
-@import url('@blocks/page');
-@import url('@blocks/services');
-@import url('@blocks/service');
-@import url('@blocks/form');
-@import url('@blocks/header');
-@import url('@blocks/feedback');
-@import url('@blocks/form');
-@import url('@blocks/main');
+/* stylelint-disable */
+@import '@scss/style';
+@import '@blocks/gallery';
+@import '@blocks/footer';
+@import '@blocks/logo';
+@import '@blocks/info';
+@import '@blocks/page';
+@import '@blocks/services';
+@import '@blocks/service';
+@import '@blocks/form';
+@import '@blocks/header';
+@import '@blocks/feedback';
+@import '@blocks/form';
+@import '@blocks/main';
+/* stylelint-enable */
