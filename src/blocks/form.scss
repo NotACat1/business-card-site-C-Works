@@ -1,0 +1,94 @@
+@import url('@mixins/input');
+@import url('@mixins/button');
+@import url('@varibles/color');
+@import url('@varibles/font');
+@import url('@varibles/font');
+
+.form {
+  @include block-reset;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &__element {
+    display: flex;
+  }
+
+  &__input {
+    @include input-reset;
+    @include typography-input;
+
+    width: 348px;
+    box-sizing: border-box;
+    color: $color-text-main;
+    padding: 13px 16px;
+    border-radius: 8px 0 0 8px;
+    background-color: $color-bg-form;
+    transition: background 0.3s ease;
+
+    @include media(xl) {
+      width: auto;
+      flex: 1 1 auto;
+    }
+
+    @include media(sm) {
+      padding: 16px;
+    }
+
+    &:hover {
+      background-color: $color-bg-form-hover;
+    }
+
+    &:focus {
+      background-color: $color-bg-form-hover;
+    }
+  }
+
+  &__button {
+    @include button-reset;
+
+    width: 221px;
+    box-sizing: border-box;
+    padding: 13px 16px;
+    border-radius: 0 8px 8px 0;
+    background-color: $color-btn;
+    display: flex;
+    gap: 10px;
+
+    @include media(sm) {
+      width: min-content;
+      padding: 16px;
+    }
+  }
+
+  &__button-text {
+    @include text-reset;
+    @include typography-input;
+
+    color: $color-text-main;
+    font-family: $font-family;
+
+    @include media(sm) {
+      display: none;
+    }
+  }
+
+  &__button-icon {
+    @include text-reset;
+    @include typography-input;
+
+    color: $color-text-main;
+    font-family: $font-family;
+  }
+
+  &__text {
+    @include text-reset;
+
+    padding-left: 10px;
+    color: $color-text-darkened;
+    font-family: $font-family;
+
+    @include typography-h6;
+  }
+}
