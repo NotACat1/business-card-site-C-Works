@@ -1,0 +1,69 @@
+@import url('@mixins/block');
+@import url('@mixins/media');
+@import url('@mixins/text');
+@import url('@mixins/typography');
+@import url('@mixins/container');
+@import url('@varibles/color');
+@import url('@varibles/font');
+
+.footer {
+  @include block-reset;
+
+  width: 100%;
+
+  &__container {
+    @include container-max-widths;
+
+    box-sizing: border-box;
+    padding-top: 60px;
+    padding-bottom: 56px;
+    border-top: $color-border solid 2px;
+
+    @include media(sm) {
+      padding-top: 30px;
+      padding-bottom: 22px;
+    }
+  }
+
+  &__logo {
+    margin-bottom: 84px;
+
+    @include media(sm) {
+      margin-bottom: 184px;
+    }
+  }
+
+  &__form {
+    margin-bottom: 18px;
+
+    @include media(sm) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__line {
+    width: 100%;
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+
+    @include media(lg) {
+      flex-direction: column;
+      gap: 60px;
+    }
+
+    @include media(sm) {
+      flex-direction: column;
+      gap: 40px;
+    }
+  }
+
+  &__line-text {
+    @include text-reset;
+
+    color: $color-text-darkened;
+    font-family: $font-family;
+
+    @include typography-h6;
+  }
+}
