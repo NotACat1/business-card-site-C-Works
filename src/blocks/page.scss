@@ -1,0 +1,8 @@
+@import url('@mixins/block');
+@import url('@varibles/color');
+
+.page {
+  @include block-reset;
+
+  background-color: $color-bg-main;
+}
