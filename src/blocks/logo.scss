@@ -1,0 +1,49 @@
+@import url('@mixins/block');
+@import url('@mixins/link');
+@import url('@mixins/typography');
+@import url('@mixins/media');
+@import url('@varibles/color');
+@import url('@varibles/font');
+
+.logo {
+  @include block-reset;
+
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  @include media(lg) {
+    gap: 19px;
+  }
+
+  @include media(sm) {
+    gap: 16px;
+  }
+
+  &__link {
+    @include link-reset;
+  }
+
+  &__text {
+    @include text-reset;
+    @include typography-logo;
+
+    color: $color-text-main;
+    font-family: $font-family;
+  }
+
+  &__subtext {
+    @include text-reset;
+
+    display: block;
+    box-sizing: border-box;
+    padding: 4px 9px;
+    border-radius: 4px;
+    background-color: $color-green;
+
+    @include typography-logo-sub;
+
+    color: $color-text-black;
+    font-family: $font-family;
+  }
+}
