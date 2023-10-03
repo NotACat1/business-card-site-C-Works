@@ -1,253 +1,111 @@
-# Шаблон lint-staged
+# Сайт визитка C-Works
 
 ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
 ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
 ![Babel](https://img.shields.io/badge/Babel-F9DC3e?style=for-the-badge&logo=babel&logoColor=black)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
-![Less](https://img.shields.io/badge/less-2B4C80?style=for-the-badge&logo=less&logoColor=white)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 
 ## Описание проекта
 
-Проект представляет собой готовый шаблонный репозиторий, созданный с учетом максимальной эффективности и комфорта при старте нового проекта. Он включает в себя набор инструментов, предназначенных для автоматизации разработки и поддержки кодовой базы.
-
-В основе данного проекта лежит совместное использование трех мощных инструментов: Husky, lint-staged и Commitlint, работающих в тесной интеграции. Husky позволяет автоматизировать запуск сценариев Git (hooks), lint-staged обеспечивает применение линтеров и автоматическую правку кода перед каждым коммитом, а Commitlint гарантирует соблюдение структурированности и информативности сообщений коммитов. Это дает возможность поддерживать код в едином стандарте и повышает качество и читаемость кодовой базы.
+Создание информативного и привлекательного одностраничного веб-ресурса, посвященного услугам по ремонту плёночных фотоаппаратов. Проект направлен на привлечение целевой аудитории и предоставление полной и понятной информации о предлагаемых услугах.
 
 ## Реализованный функционал
 
-### 1. Линтинг и автоматическая правка
+### 1. Адаптивная верстка
 
-В данном проекте установлена и настроена автоматическая система правки кода при каждом коммите, используя инструмент под названием lint-staged. Это означает, что перед фиксацией изменений в репозиторий, все файлы проходят через процесс автоматической коррекции согласно заранее установленным правилам.
+Адаптивная верстка обеспечивает корректное отображение веб-страницы на различных устройствах (десктопы, планшеты, смартфоны) и разных разрешениях экранов. Это достигается путем применения медиа-запросов и гибких CSS-стилей, которые позволяют адаптировать контент и структуру страницы под конкретные параметры устройства.
 
-lint-staged работает таким образом, что он применяет линтеры (специальные инструменты для анализа и исправления кода) к файлам, которые подлежат коммиту. Это гарантирует, что в репозиторий попадут только файлы, соответствующие установленным стандартам кодирования.
+### 2. Валидация формы по отправке почты
 
-Такой подход позволяет обеспечить высокую читаемость и качество кода в проекте, что существенно улучшает его поддержку и развитие в долгосрочной перспективе.
+Функционал валидации формы гарантирует, что пользователь введет корректный адрес электронной почты перед отправкой уведомления. Это предотвращает отправку пустых или некорректных данных.
 
-```json
-// package.json
-{
- // * * * другие настройки package.json * * *
- "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{css,scss,sass,less}": [
-      "stylelint --fix",
-      "prettier --write"
-    ],
-    "*.{json,ya?ml,md}": [
-      "prettier --write"
-    ],
-    "*.html": [
-      "htmlhint",
-      "prettier --write"
-    ]
+```js
+// FormValidator.js
+export default class FormValidator {
+  constructor({ inputSel, subBtnSel, textBtnSel, iconBtnSel, dataTextSuc }, elemForm) {
+    this._elemForm = elemForm;
+    this._arrElemsInput = [...this._elemForm.querySelectorAll(inputSel)];
+    this._elemSubBtn = this._elemForm.querySelector(subBtnSel);
+    this._elemTextBtn = this._elemSubBtn.querySelector(textBtnSel);
+    this._elemIconBtn = this._elemSubBtn.querySelector(iconBtnSel);
+    this._dataTextSuc = dataTextSuc;
+  }
+
+  _hasInvalidInput() {
+    return this._arrElemsInput.some((input) => !input.validity.valid);
+  }
+
+  _toggleBtnState() {
+    if (this._hasInvalidInput()) {
+      this._elemSubBtn.disabled = true;
+    } else {
+      this._elemSubBtn.disabled = false;
+    }
+  }
+
+  enableValidation() {
+    this._toggleBtnState();
+    this._arrElemsInput.forEach((input) => {
+      input.addEventListener('input', () => {
+        this._toggleBtnState();
+      });
+    });
+    this._elemForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const defaultText = this._elemTextBtn.textContent;
+      this._elemIconBtn.style.display = 'none';
+      this._elemTextBtn.textContent = this._elemTextBtn.dataset[this._dataTextSuc];
+      setTimeout(() => {
+        this._elemIconBtn.style.display = 'block';
+        this._elemTextBtn.textContent = defaultText;
+        this._elemForm.reset();
+      }, 2 * 1000);
+    });
   }
 }
 ```
 
-### 2. Проверка текста коммита
+### 3. Использование EJS-шаблонов
 
-Внедрена автоматизированная система проверки сообщений коммитов с применением Commitlint. Этот мощный инструмент предназначен для обеспечения высокой информативности и структурированности истории изменений в проекте.
+EJS (Embedded JavaScript templates) - это механизм шаблонизации, позволяющий встроить JavaScript код в HTML-разметку для динамической генерации контента на сервере. EJS-шаблоны упрощают создание и поддержку динамических веб-страниц.
 
-Commitlint позволяет определить набор правил, которым должны соответствовать сообщения коммитов. Эти правила могут включать в себя, например, указание типа коммита (фикс, новая функциональность, улучшение, исправление бага и т.д.) и краткое описание изменений.
+![EJS-шаблоны](https://github.com/NotACat1/business-card-site-C-Works/assets/113008873/2899fd59-99f7-4b54-9dab-76e317e211fd)
 
-Такой подход обеспечивает четкость и наглядность в истории изменений проекта, что делает ее более доступной и понятной для всех участников команды. Благодаря Commitlint, мы можем быть уверены, что каждый коммит несет в себе ясную информацию о внесенных изменениях, что важно для эффективной работы и обслуживания проекта.
 
-```js
-// commitlint.config.js
-module.exports = {
-  extends: ['@commitlint/config-conventional'],
-  rules: {
-    'header-max-length': [2, 'always', Infinity],
-    'subject-max-length': [2, 'always', Infinity],
-  },
-};
+```ejs
+// services.ejs
+<section class="services">
+  <ul class="services__container">
+    <% servicesData.forEach(({ name, description, minPrice, warranty }) => { %>
+    <li class="services__card">
+      <p class="services__card-subtitle"><%= warranty %></p>
+      <h2 class="services__card-title"><%= name %>.</h2>
+      <p class="services__card-text"><%= description %>.</p>
+      <p class="services__card-price">от <%= minPrice %></p>
+    </li>
+    <% }) %>
+  </ul>
+</section>
 ```
 
-### 3. Сборка многостраничного сайта
+### 4. Скрипты
 
-В этом проекте предусмотрена четкая структура расположения страниц. Согласно этой структуре, все страницы находятся в особой директории, названной src/pages. Каждая из этих директорий представляет собой отдельную страницу.
+`npm run build`: Этот скрипт используется для сборки проекта в режиме разработки (development). Он запускает Webpack с указанием режима разработки.
 
-Внутри каждой такой директории содержатся три обязательных файла:
+`npm run production`: Скрипт `production` используется для сборки проекта в режиме продакшн (production). Он запускает Webpack с указанием режима продакшн.
 
-1. `index.html`: Этот файл предназначен для разметки страницы. Здесь размещаются все необходимые элементы, начиная от заголовков и текстовых блоков, и заканчивая изображениями и элементами управления.
-2. `script.js`: В этом файле размещается JavaScript-код, отвечающий за логику и взаимодействие элементов на странице. Здесь могут быть реализованы различные функции, обработчики событий и многое другое.
-3. `style.scss`: Файл предназначен для описания стилей страницы с использованием препроцессора Sass. Здесь определяются все визуальные аспекты страницы, включая цвета, шрифты, расположение элементов и многое другое.
+`npm run serve`: Данный скрипт используется для запуска локального сервера разработки с помощью Webpack. Это удобно для тестирования приложения в реальном времени во время разработки.
 
-Такая структура обеспечивает четкое и организованное размещение всех компонентов каждой страницы проекта, что значительно облегчает работу с ними и поддержку проекта в целом.
+`npm run msg-commit`: Скрипт msg-commit используется для проверки сообщения коммита на соответствие заданным правилам с использованием инструмента commitlint.
 
-```
-src
-├── pages
-│   ├── page1
-│   │   ├── index.html
-│   │   ├── script.js
-│   │   └── style.scss
-│   ├── page2
-│   │   ├── index.html
-│   │   ├── script.js
-│   │   └── style.scss
-│   ├── page3
-│   │   ├── index.html
-│   │   ├── script.js
-│   │   └── style.scss
-│   └── ...
-└── ...
-```
+`npm run pre-commit`: Этот скрипт запускает предварительные проверки перед коммитом с использованием инструмента lint-staged. Обычно включает в себя проверку кода на соответствие стандартам и стиль написания.
 
-### 3. WebPack сборка
+`npm run husky-inst`: Скрипт `husky-inst` предназначен для установки и настройки Husky - инструмента для работы с хуками Git. В данном случае, он устанавливает хуки для проверки сообщения коммита и предварительные проверки перед коммитом.
 
-В данном проекте в качестве основного инструмента автоматизации сборки применяется WebPack. WebPack предоставляет мощные средства для эффективной организации сборки приложения, обеспечивая оптимальное сочетание всех его компонентов в единое работоспособное целое.
-
-Не ограничиваясь стандартными форматами js и css, WebPack умеет обрабатывать файлы с расширениями js, jsx, ts, tsx, css, scss, less. Он преобразует эти файлы в формат, который может быть легко интерпретирован и исполнен браузером, что обеспечивает плавную и эффективную работу приложения.
-
-Кроме того, WebPack раскрывает свой потенциал и в области работы с мультимедийными ресурсами. Этот инструмент способен не только обрабатывать изображения, шрифты и мультимедийные файлы, но и преобразовывать их в оптимизированные элементы, пригодные для встроенного использования в приложении.
-
-Благодаря WebPack в проекте реализован эффективный механизм сборки, что позволяет существенно повысить производительность и функциональность веб-приложения.
-
-```js
-// webpack.config.js
-module.exports = {
-  // * * * другие настройки webpack.config.js * * *
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/i,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
-      },
-      {
-        test: /\.(ts|tsx)$/i,
-        exclude: /node_modules/,
-        use: {
-          loader: 'ts-loader',
-        },
-      },
-      {
-        test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
-      },
-      {
-        test: /\.(sass|scss)$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader', 'resolve-url-loader', 'postcss-loader'],
-      },
-      {
-        test: /\.less$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader', 'resolve-url-loader', 'postcss-loader'],
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'fonts/[hash][ext][query]',
-        },
-      },
-      {
-        test: /\.(png|svg|jpg|gif|webp)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[contenthash].[ext]',
-              outputPath: 'img/',
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(mp4|mp3)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[contenthash].[ext]',
-              outputPath: 'media/',
-            },
-          },
-        ],
-      },
-    ],
-  }
-};
-```
-
-### 4. Скрипты WebPack
-
-```bash
-npm run build
-```
-
-Этот скрипт используется для сборки проекта в режиме разработки. Он запускает Webpack, который занимается сборкой всех необходимых файлов. В результате работы этого скрипта, создается версия проекта, готовая к разработке.
-
-```bash
-npm run production
-```
-
-Этот скрипт предназначен для создания production-версии проекта. Запуская данный скрипт, Webpack производит сборку, оптимизированную для продакшн среды. Полученные файлы готовы к выкладыванию на сервер для публичного доступа.
-
-```bash
-npm run serve
-```
-
-Данный скрипт используется для запуска веб-сервера в режиме разработки. Он автоматически обновляет страницу при внесении изменений в исходный код. Это обеспечивает комфортное и быстрое тестирование изменений в режиме реального времени.
-
-```bash
-npm run msg-commit
-```
-
-Этот скрипт запускает Commitlint для проверки сообщений коммитов на соответствие установленным правилам. Commitlint гарантирует, что сообщения коммитов содержат информацию о внесенных изменениях и имеют четкую структуру.
-
-```bash
-npm run pre-commit
-```
-
-Данный скрипт запускает lint-staged перед каждым коммитом. Lint-staged применяет линтеры к измененным файлам, что позволяет удостовериться, что код соответствует установленным стандартам перед фиксацией изменений.
-
-```bash
-npm run husky-inst
-```
-
-Данный скрипт предназначен для установки Husky, который позволяет автоматизировать запуск сценариев Git (hooks). В частности, он настраивает pre-commit и commit-msg хуки для запуска соответствующих проверок перед фиксацией изменений.
-
-```bash
-npm run deploy
-```
-
-Этот скрипт используется для развертывания проекта с использованием GitHub Pages. Он отправляет содержимое папки dist (которая представляет собой результат сборки) на удаленный репозиторий, что позволяет быстро публиковать проект в интернете.
-
-```json
-// package.json
-{
-  // * * * другие настройки package.json * * *
-  "scripts": {
-    "build": "webpack --mode development",
-    "production": "webpack --mode production",
-    "serve": "webpack serve",
-    "msg-commit": "commitlint -E HUSKY_GIT_PARAMS",
-    "pre-commit": "lint-staged",
-    "husky-inst": "npx husky install && chmod +x .husky/pre-commit .husky/commit-msg",
-    "deploy": "gh-pages -d dist"
-  }
-}
-```
-
-### 5. Husky, lint-staged и Commitlint
-
-Когда Husky, lint-staged и Commitlint используются вместе, это позволяет создать эффективную систему автоматической предкоммитной проверки и автокоррекции файлов перед фиксацией изменений. Например, при попытке сделать коммит, Husky может запустить lint-staged, который в свою очередь применит линтеры к измененным файлам. Затем Commitlint может проверить сообщение коммита на соответствие заданным стандартам.
-
-Этот подход обеспечивает высокий уровень качества кода и структурированности истории изменений, что значительно улучшает процесс разработки и поддержки проекта.
+`npm run deploy`: Скрипт `deploy` используется для развертывания проекта на GitHub Pages. Он копирует необходимые файлы из директории сборки в ветку gh-pages репозитория.
 
 ## Используемые технологии
 
