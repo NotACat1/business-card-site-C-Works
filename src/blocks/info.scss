@@ -1,0 +1,48 @@
+@import url('@mixins/block');
+@import url('@mixins/container');
+@import url('@mixins/media');
+@import url('@varibles/color');
+@import url('@varibles/font');
+
+.info {
+  @include block-reset;
+
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  @include media(sm) {
+    padding-top: 40px;
+    padding-bottom: 30px;
+  }
+
+  &__container {
+    @include container-max-widths;
+
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+
+    @include media(sm) {
+      gap: 20px;
+    }
+  }
+
+  &__paragraph {
+    @include text-reset;
+
+    color: $color-text-opacity;
+    font-family: $font-family;
+
+    @include typography-p;
+  }
+
+  &__title {
+    @include text-reset;
+
+    color: $color-text-main;
+    font-family: $font-family;
+
+    @include typography-h3;
+  }
+}

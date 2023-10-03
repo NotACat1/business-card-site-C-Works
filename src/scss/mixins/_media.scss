@@ -1,4 +1,4 @@
-@import url('@variables/breakpoints');
+@import url('@varibles/breakpoints');
 
 @mixin media($breakpoint) {
   @if map-has-key($breakpoints, $breakpoint) {
