@@ -1,15 +1,13 @@
-@mixin button-styles {
-  padding: 10px 20px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  background-color: #f0f0f0;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #e0e0e0;
-  }
-}
-
-.button {
-  @include button-styles;
-}
+@import url('@scss/style');
+@import url('@blocks/gallery');
+@import url('@blocks/footer');
+@import url('@blocks/logo');
+@import url('@blocks/info');
+@import url('@blocks/page');
+@import url('@blocks/services');
+@import url('@blocks/service');
+@import url('@blocks/form');
+@import url('@blocks/header');
+@import url('@blocks/feedback');
+@import url('@blocks/form');
+@import url('@blocks/main');
