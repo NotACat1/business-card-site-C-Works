@@ -59,6 +59,7 @@
     font-family: $font-family;
     letter-spacing: 0.375px;
     margin-bottom: 50px;
+    transition: opacity 0.3s ease;
 
     @include media(lg) {
       margin-bottom: 40px;
@@ -69,6 +70,14 @@
       width: 100%;
       text-align: center;
       padding: 15px 30px;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.8;
     }
   }
 
