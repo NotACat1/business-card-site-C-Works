@@ -29,13 +29,17 @@
     background-color: $color-bg-form;
     transition: background 0.3s ease;
 
-    @include media(xl) {
+    @include media(sm) {
       width: auto;
       flex: 1 1 auto;
+      padding: 16px;
     }
 
-    @include media(sm) {
-      padding: 16px;
+    &_medium {
+      @include media(xl) {
+        width: auto;
+        flex: 1 1 auto;
+      }
     }
 
     &:hover {
