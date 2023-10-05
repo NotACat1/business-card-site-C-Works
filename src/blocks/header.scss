@@ -1,0 +1,27 @@
+/* stylelint-disable */
+@import '@mixins/block';
+@import '@mixins/media';
+@import '@mixins/container';
+/* stylelint-enable */
+
+.header {
+  @include block-reset;
+
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 60px;
+  padding-bottom: 30px;
+
+  @include media(sm) {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  &__container {
+    @include container-max-widths;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

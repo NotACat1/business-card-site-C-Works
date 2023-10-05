@@ -1,0 +1,110 @@
+/* stylelint-disable */
+@import '@mixins/input';
+@import '@mixins/button';
+@import '@varibles/color';
+@import '@varibles/font';
+@import '@varibles/font';
+/* stylelint-enable */
+
+.form {
+  @include block-reset;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &__element {
+    display: flex;
+  }
+
+  &__input {
+    @include input-reset;
+    @include typography-input;
+
+    width: 348px;
+    box-sizing: border-box;
+    color: $color-text-main;
+    font-family: $font-family;
+    padding: 13px 16px;
+    border-radius: 8px 0 0 8px;
+    background-color: $color-bg-form;
+    transition: background 0.3s ease;
+
+    @include media(sm) {
+      width: auto;
+      flex: 1 1 auto;
+      padding: 16px;
+    }
+
+    &_medium {
+      @include media(xl) {
+        width: auto;
+        flex: 1 1 auto;
+      }
+    }
+
+    &:hover {
+      background-color: $color-bg-form-hover;
+    }
+
+    &:focus {
+      background-color: $color-bg-form-hover;
+    }
+  }
+
+  &__button {
+    @include button-reset;
+
+    width: 221px;
+    box-sizing: border-box;
+    padding: 13px 16px;
+    border-radius: 0 8px 8px 0;
+    background-color: $color-btn;
+    display: flex;
+    gap: 10px;
+    transition: opacity 0.3s ease;
+
+    @include media(sm) {
+      width: min-content;
+      padding: 16px;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.8;
+    }
+  }
+
+  &__button-text {
+    @include text-reset;
+    @include typography-input;
+
+    color: $color-text-main;
+    font-family: $font-family;
+
+    @include media(sm) {
+      display: none;
+    }
+  }
+
+  &__button-icon {
+    @include text-reset;
+    @include typography-input;
+
+    color: $color-text-main;
+    font-family: $font-family;
+  }
+
+  &__text {
+    @include text-reset;
+
+    padding-left: 10px;
+    color: $color-text-darkened;
+    font-family: $font-family;
+
+    @include typography-h6;
+  }
+}

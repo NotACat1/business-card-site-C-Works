@@ -1,0 +1,98 @@
+/* stylelint-disable */
+@import '@mixins/block';
+@import '@mixins/media';
+@import '@mixins/container';
+@import '@varibles/color';
+/* stylelint-enable */
+
+.gallery {
+  @include block-reset;
+
+  box-sizing: border-box;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @include media(xl) {
+    @include container-max-widths;
+
+    padding-top: 20px;
+  }
+
+  @include media(sm) {
+    padding-bottom: 20px;
+    gap: 19px;
+  }
+
+  max-width: 1380px;
+  margin: 0 auto;
+
+  &__line {
+    display: flex;
+    gap: 20px;
+
+    @include media(sm) {
+      flex-direction: column;
+      gap: 19px;
+    }
+  }
+
+  &__img {
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 5px;
+
+    &_width {
+      &_448 {
+        flex: 0 0 auto;
+        width: 448px;
+
+        @include media(sm) {
+          width: 100%;
+        }
+      }
+
+      &_730 {
+        flex: 0 0 auto;
+        width: 730px;
+
+        @include media(lg) {
+          width: 455px;
+        }
+
+        @include media(sm) {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &__block {
+    flex: 1 1 630px;
+    border-radius: 5px;
+
+    @include media(sm) {
+      flex: 0 0 auto;
+    }
+
+    &_fill {
+      &_green {
+        background-color: $color-green;
+
+        @include media(sm) {
+          height: 124px;
+        }
+      }
+
+      &_yellow {
+        background-color: $color-yellow;
+
+        @include media(sm) {
+          height: 67px;
+        }
+      }
+    }
+  }
+}

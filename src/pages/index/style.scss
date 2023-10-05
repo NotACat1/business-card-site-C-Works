@@ -1,15 +1,15 @@
-@mixin button-styles {
-  padding: 10px 20px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  background-color: #f0f0f0;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #e0e0e0;
-  }
-}
-
-.button {
-  @include button-styles;
-}
+/* stylelint-disable */
+@import '@scss/style';
+@import '@blocks/gallery';
+@import '@blocks/footer';
+@import '@blocks/logo';
+@import '@blocks/info';
+@import '@blocks/page';
+@import '@blocks/services';
+@import '@blocks/service';
+@import '@blocks/form';
+@import '@blocks/header';
+@import '@blocks/feedback';
+@import '@blocks/form';
+@import '@blocks/main';
+/* stylelint-enable */

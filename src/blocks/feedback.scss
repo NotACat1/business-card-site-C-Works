@@ -1,0 +1,91 @@
+/* stylelint-disable */
+@import '@mixins/block';
+@import '@mixins/container';
+@import '@mixins/text';
+@import '@mixins/typography';
+@import '@mixins/media';
+@import '@mixins/link';
+@import '@varibles/color';
+@import '@varibles/font';
+/* stylelint-enable */
+
+.feedback {
+  @include block-reset;
+
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 60px;
+  padding-bottom: 240px;
+
+  @include media(lg) {
+    padding-bottom: 210px;
+  }
+
+  @include media(sm) {
+    padding-bottom: 179px;
+  }
+
+  &__container {
+    @include container-max-widths;
+  }
+
+  &__title {
+    @include text-reset;
+    @include typography-h3;
+
+    color: $color-text-main;
+    font-family: $font-family;
+    margin-bottom: 90px;
+
+    @include media(lg) {
+      margin-bottom: 80px;
+    }
+
+    @include media(sm) {
+      margin-bottom: 51px;
+    }
+  }
+
+  &__link {
+    @include link-reset;
+    @include typography-input;
+
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: $color-btn;
+    padding: 13px 30px;
+    color: $color-text-main;
+    font-family: $font-family;
+    letter-spacing: 0.375px;
+    margin-bottom: 50px;
+    transition: opacity 0.3s ease;
+
+    @include media(lg) {
+      margin-bottom: 40px;
+    }
+
+    @include media(sm) {
+      margin-bottom: 30px;
+      width: 100%;
+      text-align: center;
+      padding: 15px 30px;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.8;
+    }
+  }
+
+  &__paragraph {
+    @include text-reset;
+    @include typography-p;
+
+    color: $color-text-opacity;
+    font-family: $font-family;
+  }
+}

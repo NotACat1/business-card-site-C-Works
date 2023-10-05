@@ -1,0 +1,118 @@
+/* stylelint-disable */
+@import '@mixins/media';
+/* stylelint-enable */
+
+@mixin typography-custom($font-size, $font-style, $font-weight, $line-height) {
+  font-size: $font-size;
+  font-style: $font-style;
+  font-weight: $font-weight;
+  line-height: $line-height;
+}
+
+@mixin typography-h1 {
+  @include typography-custom(112px, normal, 400, 112px);
+
+  @include media(xl) {
+    @include typography-custom(70px, normal, 400, 90px);
+  }
+
+  @include media(sm) {
+    @include typography-custom(50px, normal, 400, 60px);
+  }
+}
+
+@mixin typography-h2 {
+  @include typography-custom(80px, normal, 400, 70px);
+
+  @include media(xl) {
+    @include typography-custom(50px, normal, 400, 60px);
+  }
+
+  @include media(sm) {
+    @include typography-custom(30px, normal, 400, 38px);
+  }
+}
+
+@mixin typography-h3 {
+  @include typography-custom(32px, normal, 400, 40px);
+
+  @include media(xl) {
+    @include typography-custom(20px, normal, 400, 30px);
+  }
+
+  @include media(sm) {
+    @include typography-custom(12px, normal, 400, 18px);
+  }
+}
+
+@mixin typography-h4 {
+  @include typography-custom(32px, normal, 400, 32px);
+
+  @include media(sm) {
+    @include typography-custom(24px, normal, 400, 18px);
+  }
+}
+
+@mixin typography-h5 {
+  @include typography-custom(18px, normal, 500, 18px);
+}
+
+@mixin typography-h6 {
+  @include typography-custom(12px, normal, 500, 18px);
+}
+
+@mixin typography-p {
+  @include typography-custom(32px, normal, 400, 40px);
+
+  @include media(xl) {
+    @include typography-custom(20px, normal, 400, 30px);
+  }
+
+  @include media(sm) {
+    @include typography-custom(12px, normal, 400, 18px);
+  }
+}
+
+@mixin typography-p-card {
+  @include typography-custom(32px, normal, 400, 40px);
+
+  @include media(sm) {
+    @include typography-custom(12px, normal, 400, 18px);
+  }
+}
+
+@mixin typography-p-small {
+  @include typography-custom(15px, normal, 400, 19px);
+
+  @include media(sm) {
+    @include typography-custom(12px, normal, 400, 18px);
+  }
+}
+
+@mixin typography-price {
+  @include typography-custom(14px, normal, 400, 14px);
+
+  @include media(sm) {
+    @include typography-custom(12px, normal, 400, 18px);
+  }
+}
+
+@mixin typography-input {
+  @include typography-custom(14px, normal, 400, 24px);
+
+  @include media(sm) {
+    @include typography-custom(12px, normal, 400, 18px);
+  }
+}
+
+@mixin typography-logo {
+  @include typography-custom(22px, normal, 400, 30px);
+
+  @include media(sm) {
+    @include typography-custom(20px, normal, 400, 28px);
+  }
+}
+
+@mixin typography-logo-sub {
+  @include typography-custom(12px, normal, 400, 12px);
+}

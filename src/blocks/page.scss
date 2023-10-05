@@ -1,0 +1,12 @@
+/* stylelint-disable */
+@import '@mixins/block';
+@import '@varibles/color';
+/* stylelint-enable */
+
+.page {
+  @include block-reset;
+
+  background-color: $color-bg-main;
+  color: $color-text-main;
+  font-family: $font-family;
+}

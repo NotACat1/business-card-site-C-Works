@@ -1,0 +1,66 @@
+/* stylelint-disable */
+@import '@mixins/block';
+@import '@mixins/media';
+@import '@mixins/container';
+@import '@mixins/text';
+@import '@mixins/typography';
+@import '@varibles/color';
+@import '@varibles/font';
+/* stylelint-enable */
+
+.main {
+  @include block-reset;
+
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 30px;
+  padding-bottom: 60px;
+
+  @include media(xl) {
+    padding-top: 40px;
+    padding-bottom: 32px;
+  }
+
+  @include media(sm) {
+    padding-top: 34px;
+    padding-bottom: 20px;
+  }
+
+  &__container {
+    @include container-max-widths;
+  }
+
+  &__title {
+    @include text-reset;
+    @include typography-h1;
+
+    color: $color-text-main;
+    font-family: $font-family;
+    margin-bottom: 20px;
+
+    @include media(xl) {
+      margin-bottom: 0;
+    }
+
+    @include media(sm) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__subtitle {
+    @include text-reset;
+    @include typography-h2;
+
+    color: $color-text-main;
+    font-family: $font-family;
+    margin-bottom: 230px;
+
+    @include media(xl) {
+      margin-bottom: 470px;
+    }
+
+    @include media(sm) {
+      margin-bottom: 262px;
+    }
+  }
+}

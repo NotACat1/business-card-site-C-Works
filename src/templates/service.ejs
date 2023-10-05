@@ -1,0 +1,13 @@
+<section class="service">
+  <div class="service__container">
+    <h2 class="service__title">Полная гарантия &#9889;</h2>
+    <ul class="service__list-cards">
+      <% serviceData.forEach(({ name, description }) => { %>
+      <li class="service__card">
+        <h3 class="service__card-title"><%= name %></h3>
+        <p class="service__card-text"><%= description %>.</p>
+      </li>
+      <% }) %>
+    </ul>
+  </div>
+</section>
